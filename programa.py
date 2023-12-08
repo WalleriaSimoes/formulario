@@ -35,7 +35,21 @@ def formulario():
         except:
             print("Ocorreu um erro, reiniciando formulário")
 
+def imprimeDados():
+    with open ("respostas.txt", "r") as respostas:
+        dados = respostas.read()
+        lista_dados = []
+        lista_respostas = dados.split("\n")
+        for n in range(0, len(lista_respostas)):
+            lista_dados.append(lista_respostas[n].split('|'))
+        for x in range(0, len(lista_dados)):
+            print(f"\nNome: {lista_dados[x][0]}")
+            print(f"Idade: {lista_dados[x][1]} anos")
+            if lista_dados[x][2] == 'M':
+                print(f"Gênero: Masculino")
+            else:
+                print(f"Gênero: Feminino")
+            print(f"Telefone: {lista_dados[x][3]}\n")
 
 formulario()    
-with open("respostas.txt", "r") as respostas:
-    print(respostas.read())   
+imprimeDados()  
